@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require d3
 //= require_tree .
+function courseUpdate() {
+  document.getElementsByClassName('btn')[6].disabled = true;
+}
