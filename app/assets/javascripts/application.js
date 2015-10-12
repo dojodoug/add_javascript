@@ -15,5 +15,18 @@
 //= require d3
 //= require_tree .
 function courseUpdate() {
-  document.getElementsByClassName('btn')[6].disabled = true;
+  var count = document.getElementsByClassName('btn').length;
+  document.getElementsByClassName('btn')[count - 1].disabled = true;
+}
+
+function removeContainer() {
+  var count = document.getElementsByClassName("row").length;
+  var section = document.getElementsByClassName("row")[count -1];
+  section.style.display = 'none';
+}
+
+function addContainer() {
+  var count = document.getElementsByClassName("row").length;
+  var section = document.getElementsByClassName("row")[count -1];
+  section.style.display = 'block';
 }
