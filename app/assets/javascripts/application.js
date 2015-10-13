@@ -30,3 +30,11 @@ function addContainer() {
   var section = document.getElementsByClassName("row")[count -1];
   section.style.display = 'block';
 }
+
+function destroyGrades() {
+  var count = document.getElementsByClassName("destroy").length;
+  var checkbox = document.getElementsByClassName("destroy")[count -1];
+  var hideRow = event.target.parentElement.parentElement.parentElement;
+  hideRow.style.display = "none";
+  checkbox.checked = true;
+}
