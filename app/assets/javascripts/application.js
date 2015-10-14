@@ -14,27 +14,60 @@
 //= require jquery_ujs
 //= require d3
 //= require_tree .
-function courseUpdate() {
-  var count = document.getElementsByClassName('btn').length;
-  document.getElementsByClassName('btn')[count - 1].disabled = true;
+
+function updateCourse() {
+  $(this).prop("disabled", true);
+  $("form").submit();
 }
 
-function removeContainer() {
-  var count = document.getElementsByClassName("row").length;
-  var section = document.getElementsByClassName("row")[count -1];
-  section.style.display = 'none';
+$(function (){
+  $("input[type=submit]").on("click", updateCourse);
+});
+
+  // button.disabled = true;
+  // button.form.submit();
+
+
+function hideLastRow() {
+  last = $(".association.container").last()
+  if(last) {
+    last.hide();
+  }
 }
 
-function addContainer() {
-  var count = document.getElementsByClassName("row").length;
-  var section = document.getElementsByClassName("row")[count -1];
-  section.style.display = 'block';
+$(hideLastRow);
+
+function showLastRow() {
+  $(".association.container").last().show();
 }
 
-function destroyGrades() {
-  var count = document.getElementsByClassName("destroy").length;
-  var checkbox = document.getElementsByClassName("destroy")[count -1];
-  var hideRow = event.target.parentElement.parentElement.parentElement;
-  hideRow.style.display = "none";
-  checkbox.checked = true;
+$(function (){
+  $(".new-association").on("click", showLastRow);
+});
+
+function hideDeleteRow(){
+  $("input[type=checkbox]").prop("checkbox", true);
+  // var hideRow = button.parentElement.parentElement.parentElement;
+  // var markDestroy = button.parentElement.lastElementChild;
+  // hideRow.style.display = "none";
+  // markDestroy.checked = true;
 }
+
+
+//****************************
+//working JQuery
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+//****************************
